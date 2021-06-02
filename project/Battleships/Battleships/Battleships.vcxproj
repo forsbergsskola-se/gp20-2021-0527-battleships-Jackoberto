@@ -155,9 +155,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battleships.cpp" />
+    <ClCompile Include="RandomTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fibonacci.h" />
+    <ClInclude Include="RandomTesting.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
