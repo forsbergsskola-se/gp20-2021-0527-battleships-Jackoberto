@@ -4,6 +4,25 @@
 #include <ctime>
 #include <iostream>
 
+using namespace std;
+
+void RandomTesting::testVariableNum()
+{
+    int val;
+    while (true)
+    {
+        cout << "How many times do you wanna run" << endl;
+        cin >> val;
+        test(val);
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        break;
+    }
+} 
 
 void RandomTesting::test(int times_to_run)
 {

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-class RandomTesting
+namespace RandomTesting
 {
-public:
+    void testVariableNum();  
     void test(int times_to_run);
 };

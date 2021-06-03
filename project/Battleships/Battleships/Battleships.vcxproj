@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battleships.cpp" />
+    <ClCompile Include="Fibonacci.cpp" />
     <ClCompile Include="RandomTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
