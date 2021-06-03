@@ -154,11 +154,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleShipGame.cpp" />
     <ClCompile Include="Battleships.cpp" />
     <ClCompile Include="Fibonacci.cpp" />
     <ClCompile Include="RandomTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleShipGame.h" />
     <ClInclude Include="Fibonacci.h" />
     <ClInclude Include="RandomTesting.h" />
   </ItemGroup>
