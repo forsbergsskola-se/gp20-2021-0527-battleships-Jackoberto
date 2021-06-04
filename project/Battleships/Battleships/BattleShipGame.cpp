@@ -3,6 +3,8 @@
 #include <iostream>
 #include "CellState.h"
 
+#define CHECK_CONSOLE_ERROR(insertedCode) if (cin.fail()){ cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n'); insertedCode}
+
 using namespace std;
 
 void BattleShipGame::displayBoard(Player player, bool see_occupied)
@@ -139,12 +141,7 @@ void BattleShipGame::setOutShips(Player player)
             cout << "Place A Ship " << "(" << ships[i]->size << ")" << endl << "You Have " << 5 - i << " Ships Left" << endl;
             displayBoard(player, true);
             cin >> first >> x;
-            if (cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                continue;
-            }
+            CHECK_CONSOLE_ERROR(continue;)
             first = toupper(first);
             y = getCoordinate(first);
             if (x == -1 || y < 0 || y > 9)
@@ -152,12 +149,7 @@ void BattleShipGame::setOutShips(Player player)
             cout << "Do You Wanna Place It Vertically (0) no, (1) yes" << endl;
             int horizontal;
             cin >> horizontal;
-            if (cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                continue;
-            }
+            CHECK_CONSOLE_ERROR(continue;)
             if (i + ships[i]->size > 9)
             {
                 cout << "Ship doesn't fit here";
@@ -243,11 +235,6 @@ void BattleShipGame::setOutShips(Player player)
                     board[x + j][y] = Cell(ships[i], Occupied);
             }
             break;
-            /*if (board[x][y].cell_state != Occupied)
-            {
-                board[x][y].cell_state = Occupied;
-                break;
-            }*/ 
         }
     }
     clearConsole();
@@ -275,12 +262,7 @@ void BattleShipGame::turn(Player player)
         cout << "Player " << player + 1 << endl;
         displayBoard(player ? One : Two, false);
         cin >> first >> x;
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue;
-        }
+        CHECK_CONSOLE_ERROR(continue;)
         first = toupper(first);
         y = getCoordinate(first);
         if (x == -1 || y < 0 || y > 9)
