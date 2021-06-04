@@ -63,8 +63,6 @@ BattleShipGame::BattleShipGame(): p1_available_ships{ Ship(5), Ship(4), Ship(3),
             board_P1[i][j] = empty_cell;
             board_P2[i][j] = empty_cell;
         }
-    memset(board_P1, Empty, sizeof(board_P1));
-    memset(board_P2, Empty, sizeof(board_P2));
     ships_P1 = 16;
     ships_P2 = 16;
 }
