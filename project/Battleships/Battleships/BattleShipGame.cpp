@@ -175,17 +175,60 @@ void BattleShipGame::setOutShips(Player player)
                         space_is_available = false;
                         break;
                     }
+                    if (x + 1 <= 9 && board[x + 1][y + j].cell_state != Empty)
+                    {
+                        space_is_available = false;
+                        break;
+                    }
+                    if (x - 1 >= 0 && board[x - 1][y + j].cell_state != Empty)
+                    {
+                        space_is_available = false;
+                        break;
+                    }
                 }
                 else
+                {
                     if (board[x + j][y].cell_state != Empty)
                     {
                         space_is_available = false;
                         break;
-                    }   
+                    }
+                    if (y + 1 <= 9 && board[x + j][y + 1].cell_state != Empty)
+                    {
+                        space_is_available = false;
+                        break;
+                    }
+                    if (y - 1 >= 0 && board[x + j][y - 1].cell_state != Empty)
+                    {
+                        space_is_available = false;
+                        break;
+                    }
+                }
+            }
+            if (!horizontal)
+            {
+                if (y + 1 <= 9 && board[x][y+1].cell_state != Empty)
+                {
+                    space_is_available = false;
+                }
+                if (y - 1 >= 0 && board[x][y-1].cell_state != Empty)
+                {
+                    space_is_available = false;
+                } 
+            }
+            else
+            {
+                if (x + 1 <= 9 && board[x+1][y].cell_state != Empty)
+                {
+                    space_is_available = false;
+                }
+                if (x - 1 >= 0 && board[x][y+1].cell_state != Empty)
+                {
+                    space_is_available = false;
+                } 
             }
             if (!space_is_available)
             {
-                cout << "Ship doesn't fit here";
                 continue;
             }
             for (int j = 0; j < available_ships[i].size; j++)
