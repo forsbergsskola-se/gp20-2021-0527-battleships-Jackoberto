@@ -1,18 +1,12 @@
 ﻿#pragma once
 #include <map>
 
+#include "Cell.h"
+
 enum Player
 {
     One,
     Two
-};
-
-enum GridElementState
-{
-    Empty,
-    Occupied,
-    Hit,
-    Miss
 };
 
 class BattleShipGame
@@ -29,17 +23,17 @@ class BattleShipGame
         {'H', 7},
         {'I', 8},
         {'J', 9}
-    };  
-    GridElementState board_P1[10][10];
+    };
     int ships_P1;
-    GridElementState board_P2[10][10];
     int ships_P2;
+    Cell board_P1[10][10];
+    Cell board_P2[10][10];
+    Cell empty_cell;
     void displayBoard(Player player, bool see_occupied);
     int getCoordinate(char key);
     void clearConsole();
     void setOutShips(Player player);
     void turn(Player player);
-    void turn();
 public:
     BattleShipGame();
     void run();
