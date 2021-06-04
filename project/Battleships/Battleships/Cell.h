@@ -7,6 +7,6 @@ struct Cell
     Ship* ship;
     CellState cell_state;
     Cell();
-    Cell(CellState cell_state);
+    Cell(CellState state);
     Cell(Ship* ship, CellState cell_state);
 };

@@ -1,7 +1,7 @@
 ﻿#include "Ship.h"
 
-Ship::Ship(int size)
+Ship::Ship(int shipSize)
 {
-    this->size = size;
-    this->cells_left = size;
+    size = shipSize;
+    cells_left = shipSize;
 }

@@ -2,18 +2,18 @@
 
 Cell::Cell()
 {
-    this->ship = nullptr;
-    this->cell_state = Empty;
+    ship = nullptr;
+    cell_state = Empty;
 }
 
-Cell::Cell(CellState cell_state)
+Cell::Cell(CellState state)
 {
-    this->ship = nullptr;
-    this->cell_state = cell_state;
+    ship = nullptr;
+    cell_state = state;
 }
 
-Cell::Cell(Ship* ship, CellState cell_state)
+Cell::Cell(Ship* ship_ptr, CellState state)
 {
-    this->ship = ship;
-    this->cell_state = cell_state;
+    ship = ship_ptr;
+    cell_state = state;
 }

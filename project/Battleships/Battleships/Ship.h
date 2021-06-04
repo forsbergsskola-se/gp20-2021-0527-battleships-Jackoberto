@@ -4,5 +4,5 @@ struct Ship
 {
     int size;
     int cells_left;
-    Ship(int size);
+    explicit Ship(int shipSize);
 };
