@@ -61,8 +61,12 @@ BattleShipGame::BattleShipGame()
 
 void BattleShipGame::run()
 {
+    cout << "Time For Player 1 To Set Ships" << endl;
+    system("pause");
     setOutShips(One);
-    //displayBoard(One, false);
+    cout << "Time For Player 2 To Set Ships" << endl;
+    system("pause");
+    setOutShips(Two);
 }
 
 void BattleShipGame::clearConsole()
@@ -85,6 +89,7 @@ void BattleShipGame::setOutShips(Player player)
         while (true)
         {
             clearConsole();
+            cout << "Player " << player + 1 << endl;
             cout << "Place A Ship" << endl << "You Have " << i << " Number Of Ships Left" << endl;
             displayBoard(player, true);
             cin >> first >> x;
@@ -105,5 +110,4 @@ void BattleShipGame::setOutShips(Player player)
         }
     }
     clearConsole();
-    displayBoard(player, true);
 }
