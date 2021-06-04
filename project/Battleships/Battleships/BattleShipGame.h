@@ -17,8 +17,6 @@ enum GridElementState
 
 class BattleShipGame
 {
-    void displayBoard(Player player, bool see_occupied);
-    int getCoordinate(char key);
     std::map<char, int> to_coordinate
     {
         {'A', 0},
@@ -33,9 +31,15 @@ class BattleShipGame
         {'J', 9}
     };  
     GridElementState board_P1[10][10];
+    int ships_P1;
     GridElementState board_P2[10][10];
+    int ships_P2;
+    void displayBoard(Player player, bool see_occupied);
+    int getCoordinate(char key);
     void clearConsole();
     void setOutShips(Player player);
+    void turn(Player player);
+    void turn();
 public:
     BattleShipGame();
     void run();
