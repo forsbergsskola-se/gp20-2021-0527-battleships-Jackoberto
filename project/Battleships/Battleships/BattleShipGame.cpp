@@ -141,7 +141,7 @@ void BattleShipGame::setOutShips(Player player)
             clearConsole();
             cout << "Player " << player + 1 << endl;
             cout << "Place A Ship " << "(" << ships[i].size << ")" << endl << "You Have " << 5 - i << " Ships Left" << endl;
-            displayBoard(player, false);
+            displayBoard(player, true);
             cin >> first >> x;
             if (cin.fail())
             {
@@ -234,7 +234,7 @@ void BattleShipGame::turn(Player player)
     {
         clearConsole();
         cout << "Player " << player + 1 << endl;
-        displayBoard(player ? One : Two, true);
+        displayBoard(player ? One : Two, false);
         cin >> first >> x;
         if (cin.fail())
         {
@@ -253,8 +253,9 @@ void BattleShipGame::turn(Player player)
                 board[x][y].cell_state = Hit;
                 cout << "You Hit A Ship" << endl;
                 *ships -= 1;
-                // if (board[x][y].ship->cells_left <= 0)
-                //     cout << "You Sunk A Ship" << endl;
+                board[x][y].ship->cells_left -= 1;
+                if (board[x][y].ship->cells_left == 0)
+                    cout << "You Sunk A Ship" << endl;
             }
             else if (board[x][y].cell_state == Empty)
             {
