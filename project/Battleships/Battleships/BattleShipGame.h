@@ -24,8 +24,6 @@ class BattleShipGame
         {'I', 8},
         {'J', 9}
     };
-    Ship p1_available_ships[5];
-    Ship p2_available_ships[5];
     int ships_P1;
     int ships_P2;
     Cell board_P1[10][10];

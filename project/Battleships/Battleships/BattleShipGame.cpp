@@ -1,6 +1,5 @@
 ﻿#include "BattleShipGame.h"
 
-#include <cstring>
 #include <iostream>
 #include "CellState.h"
 
@@ -54,7 +53,7 @@ int BattleShipGame::getCoordinate(char key)
     return -1;
 }
 
-BattleShipGame::BattleShipGame(): p1_available_ships{ Ship(5), Ship(4), Ship(3), Ship(2), Ship(2)}, p2_available_ships{ Ship(5), Ship(4), Ship(3), Ship(2), Ship(2)}
+BattleShipGame::BattleShipGame()
 {
     empty_cell = Cell(Empty);
     for (int i = 0; i < 10; i++)
@@ -121,7 +120,14 @@ void BattleShipGame::setOutShips(Player player)
         board = board_P1;
     else
         board = board_P2;
-    auto available_ships = player == One ? p1_available_ships : p2_available_ships;
+    Ship* ships[]
+    {
+        new Ship(5),
+        new Ship(4),
+        new Ship(3),
+        new Ship(2),
+        new Ship(2)
+    };
     int x = -1, y = -1;
     char first;
     for (int i = 0; i < 5; i++)
@@ -130,7 +136,7 @@ void BattleShipGame::setOutShips(Player player)
         {
             clearConsole();
             cout << "Player " << player + 1 << endl;
-            cout << "Place A Ship " << "(" << available_ships[i].size << ")" << endl << "You Have " << 5 - i << " Ships Left" << endl;
+            cout << "Place A Ship " << "(" << ships[i]->size << ")" << endl << "You Have " << 5 - i << " Ships Left" << endl;
             displayBoard(player, true);
             cin >> first >> x;
             if (cin.fail())
@@ -152,14 +158,14 @@ void BattleShipGame::setOutShips(Player player)
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
-            if (i + available_ships[i].size > 9)
+            if (i + ships[i]->size > 9)
             {
                 cout << "Ship doesn't fit here";
                 continue;
             }
 
             bool space_is_available = true;
-            for (int j = 0; j < available_ships[i].size; j++)
+            for (int j = 0; j < ships[i]->size; j++)
             {
                 if (y + j > 9)
                 {
@@ -229,12 +235,12 @@ void BattleShipGame::setOutShips(Player player)
             {
                 continue;
             }
-            for (int j = 0; j < available_ships[i].size; j++)
+            for (int j = 0; j < ships[i]->size; j++)
             {
                 if (!horizontal)
-                    board[x][y + j] = Cell(&available_ships[i], Occupied);
+                    board[x][y + j] = Cell(ships[i], Occupied);
                 else
-                    board[x + j][y] = Cell(&available_ships[i], Occupied);
+                    board[x + j][y] = Cell(ships[i], Occupied);
             }
             break;
             /*if (board[x][y].cell_state != Occupied)
