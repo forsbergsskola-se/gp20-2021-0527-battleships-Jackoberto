@@ -276,7 +276,14 @@ void BattleShipGame::turn(Player player)
                 *ships -= 1;
                 board[x][y].ship->cells_left -= 1;
                 if (board[x][y].ship->cells_left == 0)
+                {
                     cout << "You Sunk A Ship" << endl;
+                    delete board[x][y].ship;
+                }
+                else
+                {
+                    board[x][y].ship = nullptr;
+                }
             }
             else if (board[x][y].cell_state == Empty)
             {
