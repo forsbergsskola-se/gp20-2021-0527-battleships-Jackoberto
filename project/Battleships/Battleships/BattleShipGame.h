@@ -31,7 +31,7 @@ class BattleShipGame
     Cell empty_cell;
     void displayBoard(Player player, bool see_occupied);
     int getCoordinate(char key);
-    void clearConsole();
+    static void clearConsole();
     void setOutShips(Player player);
     void turn(Player player);
 public:

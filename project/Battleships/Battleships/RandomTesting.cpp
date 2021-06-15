@@ -24,7 +24,7 @@ void RandomTesting::testVariableNum()
     }
 } 
 
-void RandomTesting::test(int times_to_run)
+void RandomTesting::test(const int times_to_run)
 {
     srand(time(0));
     int occurrences[20];

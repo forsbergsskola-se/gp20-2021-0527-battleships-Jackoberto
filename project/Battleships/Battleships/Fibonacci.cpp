@@ -2,7 +2,7 @@
 #include <iostream>
 #include <chrono>
 
-int Fibonacci::iteratively(int times_to_run)
+int Fibonacci::iteratively(const int times_to_run)
 {
     int y = 0, x = 1, z = 0;
     for (int i = 0; i < times_to_run; i++)
@@ -19,7 +19,7 @@ int Fibonacci::iteratively(int times_to_run)
     return z;
 }
 
-int Fibonacci::recursively(int n)
+int Fibonacci::recursively(const int n)
 {
     if(n==1||n==0){
         return n;
@@ -27,7 +27,7 @@ int Fibonacci::recursively(int n)
     return recursively(n-1)+recursively(n-2);
 }
 
-void Fibonacci::test(int n)
+void Fibonacci::test(const int n)
 {
     cout << "Getting " << n << "th Fibonacci number" << endl; 
     auto start = chrono::high_resolution_clock::now();

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void BattleShipGame::displayBoard(Player player, bool see_occupied)
+void BattleShipGame::displayBoard(const Player player, const bool see_occupied)
 {
     Cell (*board)[10];
     if (player == One)
@@ -45,7 +45,7 @@ void BattleShipGame::displayBoard(Player player, bool see_occupied)
     }
 }
 
-int BattleShipGame::getCoordinate(char key)
+int BattleShipGame::getCoordinate(const char key)
 {
     auto iterator = to_coordinate.find(key);
     if (iterator != to_coordinate.end())
@@ -115,7 +115,7 @@ void BattleShipGame::clearConsole()
     system("CLS");
 }
 
-void BattleShipGame::setOutShips(Player player)
+void BattleShipGame::setOutShips(const Player player)
 {
     Cell (*board)[10];
     if (player == One)
@@ -240,7 +240,7 @@ void BattleShipGame::setOutShips(Player player)
     clearConsole();
 }
 
-void BattleShipGame::turn(Player player)
+void BattleShipGame::turn(const Player player)
 {
     Cell (*board)[10];
     int* ships;
