@@ -107,7 +107,7 @@ void BattleShipGame::run()
                 break;
             }  
         }
-    }
+    }  
 }
 
 void BattleShipGame::clearConsole()
@@ -122,13 +122,14 @@ void BattleShipGame::setOutShips(const Player player)
         board = board_P1;
     else
         board = board_P2;
-    Ship* ships[]
+
+    shared_ptr<Ship> ships[]
     {
-        new Ship(5),
-        new Ship(4),
-        new Ship(3),
-        new Ship(2),
-        new Ship(2)
+        make_shared<Ship>(5),
+        make_shared<Ship>(4),
+        make_shared<Ship>(3),
+        make_shared<Ship>(2),
+        make_shared<Ship>(2)
     };
     int x = -1, y = -1;
     char first;
@@ -278,12 +279,8 @@ void BattleShipGame::turn(const Player player)
                 if (board[x][y].ship->cells_left == 0)
                 {
                     cout << "You Sunk A Ship" << endl;
-                    delete board[x][y].ship;
                 }
-                else
-                {
                     board[x][y].ship = nullptr;
-                }
             }
             else if (board[x][y].cell_state == Empty)
             {

@@ -12,7 +12,7 @@ Cell::Cell(const CellState state)
     cell_state = state;
 }
 
-Cell::Cell(Ship* ship, const CellState cell_state)
+Cell::Cell(const std::shared_ptr<Ship> ship, const CellState cell_state)
 {
     this->ship = ship;
     this->cell_state = cell_state;
