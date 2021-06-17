@@ -3,7 +3,8 @@
 #include <iostream>
 #include "CellState.h"
 
-#define CHECK_CONSOLE_ERROR(insertedCode) if (cin.fail()){ cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n'); insertedCode}
+#define CHECK_CONSOLE_ERROR() if (cin.fail()){ cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');}
+#define IF_CONSOLE_ERROR(insertedCode) if (cin.fail()){ cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n'); insertedCode}
 
 using namespace std;
 
@@ -142,7 +143,7 @@ void BattleShipGame::setOutShips(const Player player)
             cout << "Place A Ship " << "(" << ships[i]->size << ")" << endl << "You Have " << 5 - i << " Ships Left" << endl;
             displayBoard(player, true);
             cin >> first >> x;
-            CHECK_CONSOLE_ERROR(continue;)
+            IF_CONSOLE_ERROR(continue;)
             first = toupper(first);
             y = getCoordinate(first);
             if (x == -1 || y < 0 || y > 9)
@@ -150,7 +151,7 @@ void BattleShipGame::setOutShips(const Player player)
             cout << "Do You Wanna Place It Vertically (0) no, (1) yes" << endl;
             int horizontal;
             cin >> horizontal;
-            CHECK_CONSOLE_ERROR(continue;)
+            IF_CONSOLE_ERROR(continue;)
             if (i + ships[i]->size > 9)
             {
                 cout << "Ship doesn't fit here";
@@ -263,7 +264,7 @@ void BattleShipGame::turn(const Player player)
         cout << "Player " << player + 1 << endl;
         displayBoard(player ? One : Two, false);
         cin >> first >> x;
-        CHECK_CONSOLE_ERROR(continue;)
+        IF_CONSOLE_ERROR(continue;)
         first = toupper(first);
         y = getCoordinate(first);
         if (x == -1 || y < 0 || y > 9)
